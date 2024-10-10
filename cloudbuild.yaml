@@ -1,14 +1,14 @@
 steps:
   # Build the container image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/ds-domestock/domestock/:$COMMIT_SHA', '.']
+    args: ['build', '-t', 'gcr.io/ds-domestock/:$COMMIT_SHA', '.']
   # Push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/ds-domestock/domestock/:$COMMIT_SHA']
+    args: ['push', 'gcr.io/ds-domestock/:$COMMIT_SHA']
   # Deploy container image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
-    args: ['run', 'deploy', 'default', '--image', 'gcr.io/ds-domestock/domestock/:$COMMIT_SHA', '--region', 'us-central1']
+    args: ['run', 'deploy', 'default', '--image', 'gcr.io/ds-domestock/:$COMMIT_SHA', '--region', 'us-central1']
     env:
       - 'APP_NAME=${_APP_NAME}'
       - 'APP_ENV=${_APP_ENV}'
@@ -40,4 +40,4 @@ steps:
 options:
   logging: CLOUD_LOGGING_ONLY
 images:
-  - gcr.io/ds-domestock/domestock/:$COMMIT_SHA
+  - gcr.io/ds-domestock/:$COMMIT_SHA
