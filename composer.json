@@ -9,6 +9,7 @@
         "bezhansalleh/filament-shield": "^3.2",
         "filament/filament": "^3.2",
         "laravel/framework": "^v11.27.1",
+        "laravel/pail": "^1.1",
         "laravel/tinker": "^2.9",
         "monolog/monolog": "^3.7"
     },
