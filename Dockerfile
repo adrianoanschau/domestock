@@ -36,7 +36,8 @@ RUN apk add --no-cache php83 \
     php83-pdo_sqlite \
     php83-tokenizer \
     php83-pecl-redis \
-    php83-intl
+    php83-intl \
+    php83-pcntl
 
 # RUN #ln -s /usr/bin/php83 /usr/bin/php
 
