@@ -15,7 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions) {
         echo "<pre>";
-            var_dump($exceptions);
+            var_dump($_SERVER);
         echo "</pre>";
         die;
     })->create();
