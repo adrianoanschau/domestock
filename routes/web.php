@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-var_dump($_SERVER);
+var_dump('ESTOU AQUI');
+var_dump(storage_path());
 die;
 
 Route::get('/', function () {
