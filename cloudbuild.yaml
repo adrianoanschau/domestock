@@ -8,7 +8,16 @@ steps:
   # Deploy container image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
-    args: ['run', 'deploy', 'default', '--image', 'gcr.io/ds-domestock/domestock:$COMMIT_SHA', '--region', 'us-central1']
+    args: [
+      'run',
+      'deploy',
+      'default',
+      '--image',
+      'gcr.io/ds-domestock/domestock:$COMMIT_SHA',
+      '--region',
+      'us-central1',
+      '--allow-unauthenticated'
+    ]
     env:
       - 'APP_NAME=${_APP_NAME}'
       - 'APP_ENV=${_APP_ENV}'
