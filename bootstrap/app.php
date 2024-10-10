@@ -17,6 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->report(function (Throwable $e) {
             echo "<pre>";
             var_dump($e);
+            var_dump(getenv('APP_NAME'));
             echo "</pre>";
         });
     })->create();
