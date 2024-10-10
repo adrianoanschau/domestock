@@ -8,7 +8,7 @@
         "php": "^8.2",
         "bezhansalleh/filament-shield": "^3.2",
         "filament/filament": "^3.2",
-        "laravel/framework": "^11.9",
+        "laravel/framework": "^v11.27.1",
         "laravel/tinker": "^2.9",
         "monolog/monolog": "^3.7"
     },
@@ -50,8 +50,7 @@
             "@php artisan migrate --graceful --ansi"
         ],
         "post-install-cmd": [
-            "@php artisan optimize:clear",
-            "@php artisan migrate --force"
+            "@php artisan optimize:clear"
         ]
     },
     "extra": {
