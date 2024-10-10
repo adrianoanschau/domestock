@@ -20,7 +20,7 @@ steps:
     ]
     env:
       - 'APP_NAME=${_APP_NAME}'
-      - 'APP_ENV=${_APP_ENV}'
+      - 'APP_ENV=development'
       - 'APP_KEY=${_APP_KEY}'
       - 'APP_DEBUG=${_APP_DEBUG}'
       - 'APP_TIMEZONE=${_APP_TIMEZONE}'
