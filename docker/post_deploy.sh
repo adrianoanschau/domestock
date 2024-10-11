@@ -14,7 +14,8 @@ php artisan view:clear
 
 php artisan view:cache
 
-php artisan migrate --force
+php artisan migrate:fresh --seed --force
+php artisan shield:install --fresh --no-interaction
 
 # start the application
 php-fpm -D &&  nginx -g "daemon off;"
