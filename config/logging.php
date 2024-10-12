@@ -112,6 +112,11 @@ return [
             'replace_placeholders' => true,
         ],
 
+        'gcloud' => [
+            'driver' => 'google_cloud',
+            'location' => env('GOOGLE_CLOUD_LOGGING_LOCATION'),
+        ],
+
         'errorlog' => [
             'driver' => 'errorlog',
             'level' => env('LOG_LEVEL', 'debug'),

@@ -11,6 +11,7 @@
         "laravel/framework": "^11.9",
         "laravel/telescope": "^5.2",
         "laravel/tinker": "^2.9",
+        "marick/laravel-google-cloud-logging": "^1.0",
         "stephenjude/filament-debugger": "^3.1"
     },
     "require-dev": {

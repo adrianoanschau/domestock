@@ -41,7 +41,7 @@ RUN chmod -R 777 /var/www
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-RUN composer install --working-dir="/var/www" --no-dev --optimize-autoloader --no-interaction --no-scripts
+RUN composer install --working-dir="/var/www" --optimize-autoloader --no-interaction --no-scripts
 
 RUN composer dump-autoload --working-dir="/var/www" --no-scripts
 
