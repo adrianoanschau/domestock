@@ -5,7 +5,7 @@ USER root
 WORKDIR /var/www
 
 # setup node js source will be used later to install node js
-RUN curl -sL https://deb.nodesource.com/setup_16.x -o nodesource_setup.sh
+RUN curl -sL https://deb.nodesource.com/setup_20.x -o nodesource_setup.sh
 RUN ["sh",  "./nodesource_setup.sh"]
 
 RUN apt-get update \
@@ -51,11 +51,7 @@ RUN chmod +rwx /var/www
 
 RUN chmod -R 777 /var/www
 
-RUN npm install
-
-RUN npm rebuild node-sass
-
-RUN npm run prod
+RUN yarn && yarn build
 
 EXPOSE 80
 
