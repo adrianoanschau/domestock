@@ -35,10 +35,6 @@ COPY ./docker/nginx/nginx.conf /etc/nginx/nginx.conf
 
 COPY composer.json composer.lock /var/www/
 
-RUN chmod +rwx /var/www
-
-RUN chmod -R 777 /var/www
-
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN composer install --working-dir="/var/www" --optimize-autoloader --no-interaction --no-scripts
@@ -46,6 +42,10 @@ RUN composer install --working-dir="/var/www" --optimize-autoloader --no-interac
 RUN composer dump-autoload --working-dir="/var/www" --no-scripts
 
 COPY . /var/www
+
+RUN chmod +rwx /var/www
+
+RUN chmod -R 777 /var/www
 
 EXPOSE 80
 
