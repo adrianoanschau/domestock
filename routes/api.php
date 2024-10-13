@@ -9,4 +9,6 @@ Route::get('/', function () {
     ]);
 });
 
-Route::post('/integrations/alexa', IntegrationsControllers\AlexaController::class);
+Route::prefix('/integrations')->group(function (\Illuminate\Routing\Router $router) {
+    //
+});

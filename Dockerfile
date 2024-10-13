@@ -4,31 +4,29 @@ USER root
 
 WORKDIR /var/www
 
-# setup node js source will be used later to install node js
-RUN curl -sL https://deb.nodesource.com/setup_20.x -o nodesource_setup.sh
-RUN ["sh",  "./nodesource_setup.sh"]
+RUN apt-get update -y
 
-RUN apt-get update \
-	# gd
-	&& apt-get install -y build-essential  openssl nginx libfreetype6-dev libjpeg-dev libpng-dev libpq-dev libicu-dev libwebp-dev zlib1g-dev libzip-dev gcc g++ make vim unzip curl git jpegoptim optipng pngquant gifsicle locales libonig-dev nodejs  \
+RUN apt-get install -y software-properties-common nodejs npm
+
+RUN npm install npm@latest -g && \
+    npm install n -g && \
+    n latest
+
+RUN npm install -g yarn
+
+RUN apt-get install -y build-essential openssl nginx libfreetype6-dev libjpeg-dev libpng-dev libpq-dev libicu-dev libwebp-dev zlib1g-dev libzip-dev gcc g++ make vim unzip curl git jpegoptim optipng pngquant gifsicle locales libonig-dev \
 	&& docker-php-ext-configure gd  \
 	&& docker-php-ext-install gd \
-	# gmp
 	&& apt-get install -y --no-install-recommends libgmp-dev \
 	&& docker-php-ext-install gmp \
-	# pdo_mysql
 	&& docker-php-ext-install pdo_pgsql mbstring \
-	# pdo
 	&& docker-php-ext-install pdo \
-	# opcache
 	&& docker-php-ext-enable opcache \
-	# exif
     && docker-php-ext-install exif \
     && docker-php-ext-install sockets \
     && docker-php-ext-install pcntl \
     && docker-php-ext-install bcmath \
     && docker-php-ext-install intl \
-	# zip
 	&& docker-php-ext-install zip \
 	&& apt-get autoclean -y \
 	&& rm -rf /var/lib/apt/lists/* \
