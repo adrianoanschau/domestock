@@ -4,6 +4,10 @@ USER root
 
 WORKDIR /var/www
 
+# setup node js source will be used later to install node js
+RUN curl -sL https://deb.nodesource.com/setup_16.x -o nodesource_setup.sh
+RUN ["sh",  "./nodesource_setup.sh"]
+
 RUN apt-get update \
 	# gd
 	&& apt-get install -y build-essential  openssl nginx libfreetype6-dev libjpeg-dev libpng-dev libpq-dev libicu-dev libwebp-dev zlib1g-dev libzip-dev gcc g++ make vim unzip curl git jpegoptim optipng pngquant gifsicle locales libonig-dev nodejs  \
@@ -47,9 +51,14 @@ RUN chmod +rwx /var/www
 
 RUN chmod -R 777 /var/www
 
+RUN npm install
+
+RUN npm rebuild node-sass
+
+RUN npm run prod
+
 EXPOSE 80
 
 RUN ["chmod", "+x", "./docker/post_deploy.sh"]
 
 CMD [ "sh", "./docker/post_deploy.sh" ]
-# CMD php artisan serve --host=127.0.0.1 --port=9000
